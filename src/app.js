@@ -39,8 +39,8 @@ function createTextBox() {
 
   const canButEle = document.querySelector('#classcancel')
   canButEle.addEventListener("click", (evt) => {
-      textAreaEle = document.getElementById('textarea1')
-      saveButEle = document.querySelector('#idcancel')
+      let textAreaEle = document.getElementById('textarea1')
+      let saveButEle = document.querySelector('#idcancel')
 
       canButEle.remove()
       saveButEle.remove()
@@ -51,4 +51,18 @@ function createTextBox() {
 }
 noteBtn.addEventListener("click", createTextBox)
 
+saveBut.addEventListener("click", (evt) => {
+  let textAreaValue = noteLocation.querySelector('#textarea1').value
+  textAreaValue = textAreaValue.split('\n')
+  notes.push({title: textAreaValue[0], noteBody: textAreaValue, id: notes.length + 1})
+  const canButEle = document.querySelector('#classcancel')
+  let textAreaEle = document.getElementById('textarea1')
+  let saveButEle = document.querySelector('#idcancel')
+
+  canButEle.remove()
+  saveButEle.remove()
+  textAreaEle.remove()
+  console.log(notes)
+  noteBtn.addEventListener("click", createTextBox)
+})
 
