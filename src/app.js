@@ -11,7 +11,6 @@ const textArea = document.createElement("textarea");
 textArea.id = 'textarea1';
 textArea.rows = 30;
 textArea.cols = 50;
-textArea.textContent = 'Write your new note here!'
 
 //create save button
 const saveBut = document.createElement("button")
@@ -28,6 +27,7 @@ const noteLocation = document.querySelector(".create-note-area");
 const noteBtn = document.querySelector(".fa-circle-plus");
 
 function createTextBox() {
+  textArea.value = ''
   noteLocation.append(textArea)
   noteLocation.append(saveBut)
   noteLocation.append(canBut)
@@ -63,6 +63,12 @@ saveBut.addEventListener("click", (evt) => {
   saveButEle.remove()
   textAreaEle.remove()
   console.log(notes)
+  let liAdd = document.createElement("li")
+  liAdd.textContent = textAreaValue[0]
+  const notesList = document.querySelector('.notes-list')
+  notesList.append(liAdd)
   noteBtn.addEventListener("click", createTextBox)
 })
+
+
 
