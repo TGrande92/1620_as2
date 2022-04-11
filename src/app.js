@@ -54,8 +54,8 @@ noteBtn.addEventListener("click", createTextBox)
 // save button functions
 saveBut.addEventListener("click", (evt) => {
   let textAreaValue = noteLocation.querySelector('#textarea1').value
-  textAreaValue = textAreaValue.split('\n')
-  notes.push({title: textAreaValue[0], noteBody: textAreaValue, id: notes.length + 1})
+  let textAreaTitle = textAreaValue.split('\n')
+  notes.push({title: textAreaTitle[0], noteBody: textAreaValue, id: notes.length + 1})
   const canButEle = document.querySelector('#classcancel')
   let textAreaEle = document.getElementById('textarea1')
   let saveButEle = document.querySelector('#idcancel')
@@ -65,32 +65,25 @@ saveBut.addEventListener("click", (evt) => {
   textAreaEle.remove()
   console.log(notes)
   let liAdd = document.createElement("li")
-  liAdd.textContent = textAreaValue[0]
-  liAdd.id = notes.length + 1
+  liAdd.textContent = notes[notes.length - 1].title
+  liAdd.id = notes.length
   const notesList = document.querySelector('.notes-list')
   notesList.append(liAdd)
   noteBtn.addEventListener("click", createTextBox)
+
+
+// 
+
+  const readNote = document.querySelector(".read-note-area");
+  
+  let idNum = notes.length 
+  let idNumStr = idNum.toString()
+  let liID = document.getElementById(idNumStr)
+  let idStrToNum = Number(liID.id)
+  liID.addEventListener("click", (evt =>{
+    readNote.innerHTML = notes[idStrToNum - 1].noteBody
+  }))
+
+  
   })
-
-
-
-//open nav title
-
-const noteSelect = document.querySelectorAll(".notes-list");
-const readNote = document.querySelector(".read-note-area");
-
-noteSelect.forEach((element) =>
-  element.addEventListener("click", (evt) => {
-    listNotes = notes.map(({ noteBody }) => noteBody)
-    console.log(listNotes)
-   // idNotes = notes.map(({ id })) //change this to reference the dictionary id to compare7
-    
-    // for (let string of listNotes)
-    //   for (let item of string)
-    //     console.log(item)
-
-
-    readNote.insertAdjacentHTML("beforeend", notes[1].noteBody);
-  })
-);
 
