@@ -19,8 +19,10 @@ saveBut.textContent = 'Save'
 
 //create cancel button
 const canBut = document.createElement("button");
+const canBut1 = document.createElement("button");
 canBut.id = 'classcancel';
 canBut.textContent = 'cancel';
+canBut1.textContent = 'X'
 
 //global variables
 var textAreaEle = document.getElementById('textArea1');
@@ -63,7 +65,6 @@ saveBut.addEventListener("click", (evt) => {
   canButEle.remove()
   saveButEle.remove()
   textAreaEle.remove()
-  console.log(notes)
   let liAdd = document.createElement("li")
   liAdd.textContent = notes[notes.length - 1].title
   liAdd.id = notes.length
@@ -75,13 +76,29 @@ saveBut.addEventListener("click", (evt) => {
 // 
 
   const readNote = document.querySelector(".read-note-area");
+  let pTag = document.createElement("p")
+  let h2Add = document.createElement("h2")
+  let divOne = document.createElement("div")
+  divOne.className = 'noteDiv'
   
   let idNum = notes.length 
   let idNumStr = idNum.toString()
   let liID = document.getElementById(idNumStr)
   let idStrToNum = Number(liID.id)
   liID.addEventListener("click", (evt =>{
-    readNote.innerHTML = notes[idStrToNum - 1].noteBody
+
+    h2Add.textContent = notes[idStrToNum - 1].title
+    divOne.remove()
+    readNote.append(divOne)
+    divOne.append(h2Add)
+    divOne.append(pTag)
+    divOne.append(canBut1)
+
+    pTag.innerHTML = notes[idStrToNum - 1].noteBody
+
+    canBut1.addEventListener("click", (evt) =>{
+      divOne.remove()
+    })
   }))
 
   

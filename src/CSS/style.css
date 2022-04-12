@@ -11,6 +11,20 @@
   --lrg-txt:   2.2rem;
 }
 
+*{
+  padding: 0%;
+  margin: 0%;
+  color: #eb6f92;
+}
+button:active{
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  transform: scale(0.98);
+}
+
+.create-note-area{
+  display: flex;
+  flex-direction: column;
+}
 .light-theme {
   --bg-color: var(--not-white);
   --bg-side:  var(--drk-white);
@@ -51,9 +65,10 @@
   color: var(--text);
 }
 
-.side-nav span p {
+.side-nav span p{
   font-size: var(--lrg-txt);
 }
+
 
 .main {
   display: flex;
@@ -101,7 +116,7 @@ article {
   margin-bottom: var(--lrg-txt);
 }
 
-.read-note-area p {
+.read-note-area p h2{
   font-family: 'Libre Baskerville', serif;
   color: var(--text);
   font-size: 1.6rem;
@@ -133,4 +148,13 @@ footer {
 footer p {
   color: var(--text);
   font-size: var(--lrg-txt);
+}
+
+
+p h2 {
+  font-size: xx-large;
+}
+
+textarea {
+
 }
